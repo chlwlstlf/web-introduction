@@ -21,11 +21,7 @@
 
       <div>
         <h2>자기소개</h2>
-        <ul>
-          <li>이름: 텐텐</li>
-          <li>사는 곳: 경기도 오산시</li>
-          <li>안녕하세요. 10월 10일생 텐텐입니다.</li>
-        </ul>
+        <ul class="my-info-content"></ul>
       </div>
 
       <div>
@@ -44,30 +40,29 @@
         </table>
       </div>
 
-      <div>방명록</div>
-      <form>
-        <label>이름: </label>
-        <input type="text" />
-        <div>방명록</div>
-        <label for="checkbox1">옵션 1</label>
-
-        <input
-          type="checkbox"
-          id="checkbox2"
-          name="checkbox2"
-          value="value2"
-        />
-        <label for="checkbox2">옵션 2</label>
-
-        <input
-          type="checkbox"
-          id="checkbox3"
-          name="checkbox3"
-          value="value3"
-        />
-        <label for="checkbox3">옵션 3</label>
-        <div><button type="button">등록</button> <button type="reset">취소</button></div>
-      </form>
+      <div>
+        <h2>방명록</h2>
+        <form class="guest-book-form">
+          <label for="name">이름: </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+          />
+          <div class="guest-book-check-box"></div>
+          <div>
+            <button
+              class="submit-btn"
+              type="button"
+            >
+              등록
+            </button>
+            <button type="reset">취소</button>
+          </div>
+        </form>
+        <div class="guest-book-list"></div>
+      </div>
 
       <footer>Copyright 2023. tenten</footer>
     </div>
