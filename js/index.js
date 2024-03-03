@@ -7,15 +7,44 @@ const $guestBookCheckBox = document.querySelector(".guest-book-check-box");
 const $submitBtn = document.querySelector(".submit-btn");
 const $guestBookList = document.querySelector(".guest-book-list");
 
-$myInfoContent.innerHTML = Object.entries(myInfo)
-  .map(([key, value]) => {
-    return `<li>${key}: ${value}</li>`;
-  })
-  .join("");
+document.addEventListener("DOMContentLoaded", () => {
+  showMyInfoContent();
+  oneLinerAnimation();
+  showTableContent();
+  showCheckbox();
+  onClickButton();
+  showGuestbook();
+});
 
-$tableBody.innerHTML = movies
-  .map((movie, index) => {
-    return `
+const showMyInfoContent = () => {
+  $myInfoContent.innerHTML = Object.entries(myInfo)
+    .map(([key, value]) => {
+      return `<li>${key}: ${value}</li>`;
+    })
+    .join("");
+};
+
+const oneLinerAnimation = () => {
+  const completionWord = "안녕하세요. 10월 10일생 FE 텐텐입니다.\n말하는 감자에서 생각하는 감자로 바뀌는 중입니다.";
+  let count = 0;
+  let blogTitle = "";
+
+  const typingInterval = setInterval(() => {
+    blogTitle += completionWord[count];
+    document.querySelector(".one-liner").innerText = blogTitle;
+    count++;
+
+    if (count >= completionWord.length) {
+      clearInterval(typingInterval);
+      // document.querySelector(".blink").style.display = "none"; // blink 끄기
+    }
+  }, 130);
+};
+
+const showTableContent = () => {
+  $tableBody.innerHTML = movies
+    .map((movie, index) => {
+      return `
       <tr>
         <td>${index + 1}</td>
         <td>${movie.title}</td>
@@ -24,12 +53,14 @@ $tableBody.innerHTML = movies
         <td><a href="${movie.link}">클릭</a></td>
       </tr>
     `;
-  })
-  .join("");
+    })
+    .join("");
+};
 
-$guestBookCheckBox.innerHTML = movies
-  .map((movie, index) => {
-    return `            
+const showCheckbox = () => {
+  $guestBookCheckBox.innerHTML = movies
+    .map((movie, index) => {
+      return `            
       <input
         type="checkbox"
         id="${movie.title}"
@@ -39,25 +70,28 @@ $guestBookCheckBox.innerHTML = movies
       />
       <label for="${movie.title}">${movie.title}</label>
     `;
-  })
-  .join("");
+    })
+    .join("");
+};
 
-$submitBtn.addEventListener("click", (event) => {
-  event.preventDefault();
+const onClickButton = () => {
+  $submitBtn.addEventListener("click", (event) => {
+    event.preventDefault();
 
-  const $nameInput = document.querySelector("#name");
-  const $checkedboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    const $nameInput = document.querySelector("#name");
+    const $checkedboxes = document.querySelectorAll('input[type="checkbox"]:checked');
 
-  const name = $nameInput.value;
-  const checkedOptions = Array.from($checkedboxes).map((checkbox) => checkbox.value);
+    const name = $nameInput.value;
+    const checkedOptions = Array.from($checkedboxes).map((checkbox) => checkbox.value);
 
-  console.log("Name:", name);
-  console.log("Checked options:", checkedOptions);
-  alert(`${name}님, 저와 ${checkedOptions.length}개의 취향이 같으시네요!`);
-  addEntry(name, checkedOptions);
-  showGuestbook();
-  inputClear();
-});
+    console.log("Name:", name);
+    console.log("Checked options:", checkedOptions);
+    alert(`${name}님, 저와 ${checkedOptions.length}개의 취향이 같으시네요!`);
+    addEntry(name, checkedOptions);
+    showGuestbook();
+    inputClear();
+  });
+};
 
 const inputClear = () => {
   const $nameInput = document.querySelector("#name");
@@ -93,5 +127,3 @@ const showGuestbook = () => {
     })
     .join("");
 };
-
-showGuestbook();
