@@ -16,10 +16,10 @@
   <body>
     <div id="app">
       <header>
-        <h1>📂텐텐의 홈페이지에 오신 것을 환영합니다📂</h1>
+        <h1>텐텐의 홈페이지에 오신 것을 환영합니다</h1>
       </header>
 
-      <div class="my-info-container">
+      <div class="my-info-section">
         <img src="../images/my_info_post.png" />
         <div class="my-info-wrapper">
           <h2>자기소개</h2>
@@ -28,7 +28,8 @@
         </div>
       </div>
 
-      <div>
+      <div class="movie-section">
+        <div class="movie-section-img"></div>
         <h2>인생 영화 BEST5</h2>
         <table border="1">
           <thead>
@@ -42,9 +43,10 @@
           </thead>
           <tbody class="table-body"></tbody>
         </table>
+        <div class="movie-section-img"></div>
       </div>
 
-      <div>
+      <div class="guest-book-section">
         <h2>방명록</h2>
         <form class="guest-book-form">
           <label for="name">이름: </label>
@@ -52,23 +54,25 @@
             type="text"
             id="name"
             name="name"
-            required
           />
           <div class="guest-book-check-box"></div>
-          <div>
-            <button
-              class="submit-btn"
-              type="button"
-            >
-              등록
-            </button>
-            <button type="reset">취소</button>
-          </div>
+          <button
+            class="submit-btn"
+            type="button"
+          >
+            등록
+          </button>
+          <button
+            class="reset-btn"
+            type="reset"
+          >
+            취소
+          </button>
         </form>
         <div class="guest-book-list"></div>
       </div>
 
-      <footer>Copyright 2023. tenten</footer>
+      <footer>Copyright 2024. tenten</footer>
     </div>
     <script
       type="module"

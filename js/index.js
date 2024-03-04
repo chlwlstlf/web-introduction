@@ -36,7 +36,6 @@ const oneLinerAnimation = () => {
 
     if (count >= completionWord.length) {
       clearInterval(typingInterval);
-      // document.querySelector(".blink").style.display = "none"; // blink 끄기
     }
   }, 130);
 };
@@ -84,8 +83,12 @@ const onClickButton = () => {
     const name = $nameInput.value;
     const checkedOptions = Array.from($checkedboxes).map((checkbox) => checkbox.value);
 
-    console.log("Name:", name);
-    console.log("Checked options:", checkedOptions);
+    if (!name) {
+      alert("이름을 입력하세요.");
+      event.preventDefault();
+      return;
+    }
+
     alert(`${name}님, 저와 ${checkedOptions.length}개의 취향이 같으시네요!`);
     addEntry(name, checkedOptions);
     showGuestbook();
@@ -119,10 +122,16 @@ const showGuestbook = () => {
   const entries = JSON.parse(localStorage.getItem("guestbook")) || [];
   $guestBookList.innerHTML = entries
     .map((entry, index) => {
+      const optionsHTML = entry.options.map((option) => `<div>${option}</div>`).join("");
       return `  
-        <div>${index + 1}빠</div>          
-        <div>${entry.name}</div>
-        <div>${entry.options}</div>
+      <div class="envelope-container">
+        <div class="envelope"></div>
+        <div class="envelope-flap">${index + 1}</div>
+        <div class="envelope-content">              
+          <h4>${entry.name}</h4>
+          <div>${optionsHTML}</div>
+        </div>
+      </div>
       `;
     })
     .join("");

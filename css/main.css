@@ -2,10 +2,9 @@ body {
   text-align: center;
   font-family: "Hana_handwriting";
   overflow-x: hidden;
-
+  margin: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url("../images/paper.jpg");
 }
 
 @font-face {
@@ -22,18 +21,37 @@ body {
   align-items: center;
 }
 
-h2 {
+header,
+footer {
+  width: 100vw;
+  background-color: #f9f9f9;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #333;
+  font-size: 28px;
+  margin: 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
 }
 
 /* my-info */
-.my-info-container {
+.my-info-section {
   position: relative;
   display: inline-block;
   width: 400px;
 }
 
-.my-info-container img {
+.my-info-section img {
   display: block;
   width: 100%;
   height: auto;
@@ -41,12 +59,12 @@ h2 {
 
 .my-info-wrapper {
   position: absolute;
-  top: 50px;
+  top: 70px;
   left: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  gap: 10px;
   width: 100%;
   height: 180px;
 }
@@ -70,6 +88,200 @@ h2 {
   }
 }
 
-img {
-  width: 80px;
+/* 영화 */
+.movie-section {
+  background-color: gray;
+  width: 100vw;
+  color: white;
+  text-align: center;
+}
+
+.movie-section-img {
+  background-image: url("../images/movie_film.png");
+  height: 70px;
+}
+
+.movie-section h2 {
+  margin: 20px;
+}
+
+table {
+  margin: auto;
+  width: 80%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+td img {
+  width: 90px;
+}
+
+/* 방명록 */
+.guest-book-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(255, 192, 203, 0.5), rgba(255, 192, 203, 0.5));
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.guest-book-section h2 {
+  margin: 20px;
+}
+
+.guest-book-form {
+  width: 70%;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 3px solid #ccc;
+  border-radius: 10px;
+}
+
+input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.submit-btn,
+.reset-btn {
+  padding: 5px 20px;
+  background-color: gray;
+  opacity: 0.8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover,
+.reset-btn:hover {
+  opacity: 1;
+}
+
+.guest-book-check-box {
+  margin: 20px;
+}
+
+.guest-book-check-box input[type="checkbox"] {
+  display: none;
+}
+
+.guest-book-check-box label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+  margin-right: 10px;
+}
+
+.guest-book-check-box label::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+}
+
+.guest-book-check-box input[type="checkbox"]:checked + label::before {
+  background-color: gray;
+  border-color: gray;
+}
+
+.guest-book-check-box label::after {
+  content: "\2713";
+  font-size: 14px;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 3px;
+  display: none;
+}
+
+.guest-book-check-box input[type="checkbox"]:checked + label::after {
+  display: block;
+}
+
+.guest-book-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2%;
+  width: 70%;
+}
+
+.envelope-container {
+  position: relative;
+  width: 100px;
+  height: 120px;
+  margin: 30px 0;
+}
+
+.envelope {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: calc(100% + 2px);
+  height: calc(50% + 1px);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  transform: rotate(-1deg);
+  z-index: 3;
+}
+
+.envelope-content {
+  position: absolute;
+  top: -20px;
+  left: 5px;
+  background-image: url("../images/paper.jpg");
+  width: calc(100% - 10px);
+  height: calc(100% + 20px);
+  z-index: 0;
+  border-radius: 5px;
+}
+
+.envelope-content:hover {
+  top: -110px;
+  left: 7px;
+  transform: rotate(3deg);
+  z-index: 2;
 }
